@@ -3,37 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primera página</title>
+    <title>El Roble - Login</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-            font-family: "Comic Sans MS", cursive;
-            max-width: 800px;
-            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            background: linear-gradient(135deg, #0099ff 0%, #0043ff 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
             padding: 20px;
-            line-height: 1.6;
-            background-color: #594ae4; 
-            background-image: repeating-linear-gradient(
-                45deg,
-                #73abff,
-                #7b8fff 10px,
-                #5456ff 10px,
-                #4b8ad1 20px
-            ); 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
         }
-        h1 {
-            color: #000000;
+
+        .welcome-section {
+            color: white;
+            padding: 20px;
         }
-        p {
-            color: #000000;
+
+        .welcome-section img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #0099ff;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0099ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0043ff;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #0099ff;
+            text-decoration: none;
+        }
+
+        .grid-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <h1>Bienvenidos a mi sitio web :) </h1>
-    
-  <img src=https://pluspng.com/img-png/casas-png-triangle-houses-icon-transparent-png-512.png alt="error">
-    <p> Mi comida favorita es la pizza hawaiana, hay un lugar en Las Tablas en las que las hacen delgadas y crujientes, con una piña deliciosa, en otros lugares también las hacen ricas pero no como ahí, tambien la pizza de salsa blanca, sabe mucho mejor que la roja, y con mucho queso.</p>
-    
-    <p> En cuanto a mis pasatiempos, me fascina leer, es mi mejor momento del día, he leido bastantes libros, mis favoritos son La Vida Invisible de Addie LaRue y El Perfume, tambien me gusta escuchar música, me gusta el rock, no muy pesado y más el clásico que los demás, juego CodM y me gusta pasar mucho tiempo con mi hermano y en mi tiempo libre , busco programas y becas que me puedan ser útiles para el futuro.</p>
+    <div class="grid-background"></div>
+    <div class="container">
+        <div class="welcome-section">
+            <img src=https://images.vexels.com/media/users/3/142719/isolated/preview/f07a4b2d673e9935e58e6ff8262d4a1d-icono-de-casas-de-triangulo.png?w=360 alt="Logo">
+            <h1>Les damos la bienvenida<br>EL ROBLE</h1>
+            <p>Asignación de Ana González.</p>
+        </div>
+        <div class="login-form">
+            <h2>Bienvenido</h2>
+            <form id="loginForm" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Ingresar usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Ingresar contraseña" required>
+                </div>
+                <button type="submit">Ingresar</button>
+                <div class="forgot-password">
+                    <a href="#">¿Perdiste tu contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Inicio de sesión exitoso!');
+            return false;
+        }
+    </script>
 </body>
-</html
+</html>
