@@ -28,10 +28,10 @@
     }
 
     .heart {
-        font-size: clamp(8px, 2.8vw, 20px);
-        line-height: clamp(8px, 2.8vw, 20px);
+        font-size: clamp(10px, 4vw, 28px); /* Más grande */
+        line-height: clamp(10px, 4vw, 28px);
         color: #c6001d; /* Rojo más oscuro para mejor contraste */
-        white-space: pre; /* Solo aquí para no afectar todo el body */
+        white-space: pre;
     }
 
     .parpadeo {
@@ -45,7 +45,7 @@
     }
 
     h1 {
-        font-size: clamp(16px, 5vw, 36px);
+        font-size: clamp(20px, 6vw, 40px); /* Un poquito más grande el título */
         margin-bottom: 20px;
         color: #fff;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -53,26 +53,27 @@
 </style>
 </head>
 <body>
-<h1>ME ENCANTAS</h1>
+</h1>ME ENCANTAS</h1>
 
 <pre class="heart" id="corazon"></pre>
 
 <script>
-    const texto = "LUCIA JOSE ";
+    const texto = "Lucía y José ";
     const letras = texto.split("");
 
     const patron = [
-        "  ***   ***  ",
-        " ***** ***** ",
-        "*************",
-        "*************",
-        " *********** ",
-        "  *********  ",
-        "   *******   ",
-        "    *****    ",
-        "     ***     ",
-        "      *      "
-    ];
+        "   ***     ***   ",
+        "  *****   *****  ",
+        " ****************",
+        " ****************",
+        "  ************** ",
+        "   ************  ",
+        "    **********   ",
+        "     ********    ",
+        "      ******     ",
+        "       ****      ",
+        "        **       "
+    ]; // Patrón un poco más grande
 
     let corazonCompleto = "";
     let indexTexto = 0;
@@ -99,4 +100,5 @@
 </script>
 </body>
 </html>
+
 
