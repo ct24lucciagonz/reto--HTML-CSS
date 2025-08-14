@@ -2,12 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>❤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 <style>
     body {
         margin: 0;
-        padding: 10px;
+        padding: 0;
+        background: linear-gradient(-45deg, #ff4b5c, #ff758f, #ffb3c6, #ffe0e6);
+        background-size: 400% 400%;
+        animation: gradientBG 8s ease infinite;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -15,10 +19,6 @@
         min-height: 100vh;
         font-family: 'Playfair Display', serif;
         text-align: center;
-        white-space: pre;
-        background: linear-gradient(-45deg, #ff4b5c, #ff758f, #ffb3c6, #ffe0e6);
-        background-size: 400% 400%;
-        animation: gradientBG 8s ease infinite;
     }
 
     @keyframes gradientBG {
@@ -28,15 +28,14 @@
     }
 
     .heart {
-        font-size: 4vw; /* Adaptativo */
-        line-height: 4vw;
-        animation: colorChange 1.5s infinite alternate;
-        max-width: 100%;
-        overflow-wrap: break-word;
+        font-size: clamp(8px, 2.8vw, 20px);
+        line-height: clamp(8px, 2.8vw, 20px);
+        color: #c6001d; /* Rojo más oscuro para mejor contraste */
+        white-space: pre; /* Solo aquí para no afectar todo el body */
     }
 
     .parpadeo {
-        animation: blink 1.5s infinite, colorChange 1.5s infinite alternate;
+        animation: blink 1.5s infinite;
     }
 
     @keyframes blink {
@@ -45,64 +44,44 @@
         100% { opacity: 1; }
     }
 
-    @keyframes colorChange {
-        0% { color: #ff0000; }
-        100% { color: #ff69b4; }
-    }
-
     h1 {
-        font-size: 6vw;
+        font-size: clamp(16px, 5vw, 36px);
         margin-bottom: 20px;
-        animation: colorChange 1.5s infinite alternate;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 </style>
 </head>
 <body>
-<h1> Me encantas</h1>
+<h1>ME ENCANTAS</h1>
 
 <pre class="heart" id="corazon"></pre>
 
 <script>
-    const nombre1 = "LUCIA";
-    const nombre2 = "JOSE";
-    const texto = `${nombre1} ${nombre2} `;
+    const texto = "LUCIA JOSE ";
+    const letras = texto.split("");
 
     const patron = [
-        "      *****     *****      ",
-        "   ********* *********     ",
-        "  *********************    ",
-        " *************************  ",
-        " *************************  ",
-        "  ***********************   ",
-        "   *********************    ",
-        "    *******************     ",
-        "     *****************      ",
-        "      ***************       ",
-        "       *************        ",
-        "        ***********         ",
-        "         *********          ",
-        "          *******           ",
-        "           *****            ",
-        "            ***             ",
-        "             *              "
+        "  ***   ***  ",
+        " ***** ***** ",
+        "*************",
+        "*************",
+        " *********** ",
+        "  *********  ",
+        "   *******   ",
+        "    *****    ",
+        "     ***     ",
+        "      *      "
     ];
 
     let corazonCompleto = "";
     let indexTexto = 0;
-    const palabras = texto.trim().split(" ");
 
     for (let fila of patron) {
-        let filaTexto = "";
         for (let char of fila) {
-            if (char === "*") {
-                const palabra = palabras[indexTexto % palabras.length];
-                filaTexto += palabra + " ";
-                indexTexto++;
-            } else {
-                filaTexto += "  ";
-            }
+            corazonCompleto += (char === "*") ? letras[indexTexto++ % letras.length] : " ";
         }
-        corazonCompleto += filaTexto.trimEnd() + "\n";
+        corazonCompleto += "\n";
     }
 
     let i = 0;
@@ -110,7 +89,7 @@
         document.getElementById("corazon").textContent = corazonCompleto.slice(0, i);
         i++;
         if (i <= corazonCompleto.length) {
-            setTimeout(mostrar, 8); // velocidad rápida
+            setTimeout(mostrar, 20); // velocidad más suave
         } else {
             document.getElementById("corazon").classList.add("parpadeo");
         }
@@ -120,3 +99,4 @@
 </script>
 </body>
 </html>
+
