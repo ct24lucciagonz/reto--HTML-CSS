@@ -2,105 +2,107 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title> PARA TI CARIÑO❤</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<title>❤</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 <style>
     body {
-        background-color: black;
-        font-family: 'Great Vibes', cursive;
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: 'Playfair Display', serif;
         text-align: center;
         white-space: pre;
+        background: linear-gradient(-45deg, #ff4b5c, #ff758f, #ffb3c6, #ffe0e6);
+        background-size: 400% 400%;
+        animation: gradientBG 8s ease infinite;
     }
-    .heart {
-        font-size: 36px; /* Gigante */
-        line-height: 36px;
-        background: linear-gradient(90deg, red, pink, white, pink, red);
-        background-size: 400% 100%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 6s ease infinite;
-        display: inline-block;
-    }
-    .latido {
-        animation: heartbeat 1.2s infinite, gradient 6s ease infinite;
-    }
-    @keyframes gradient {
+
+    @keyframes gradientBG {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
-    @keyframes heartbeat {
-        0% { transform: scale(1); }
-        14% { transform: scale(1.2); }
-        28% { transform: scale(1); }
-        42% { transform: scale(1.2); }
-        70% { transform: scale(1); }
+
+    .heart {
+        font-size: 4vw; /* Adaptativo */
+        line-height: 4vw;
+        animation: colorChange 1.5s infinite alternate;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .parpadeo {
+        animation: blink 1.5s infinite, colorChange 1.5s infinite alternate;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.3; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes colorChange {
+        0% { color: #ff0000; }
+        100% { color: #ff69b4; }
+    }
+
+    h1 {
+        font-size: 6vw;
+        margin-bottom: 20px;
+        animation: colorChange 1.5s infinite alternate;
     }
 </style>
 </head>
 <body>
-<h1 style="color:red;">💖 Para ti 💖</h1>
+<h1> Me encantas</h1>
 
 <pre class="heart" id="corazon"></pre>
 
 <script>
-    const nombre1 = "LUCÍA";
-    const nombre2 = "Y JOSÉ";
+    const nombre1 = "LUCIA";
+    const nombre2 = "JOSE";
     const texto = `${nombre1} ${nombre2} `;
 
     const patron = [
-        "           *************               *************           ",
-        "        *******************         *******************        ",
-        "      ***********************     ***********************      ",
-        "    ***************************   ***************************    ",
-        "   ***********************************************************   ",
-        "  *************************************************************  ",
-        "  *************************************************************  ",
-        "   ***********************************************************   ",
-        "    *********************************************************    ",
-        "     *******************************************************     ",
-        "      *****************************************************      ",
-        "       ***************************************************       ",
-        "        *************************************************        ",
-        "         ***********************************************         ",
-        "          *********************************************          ",
-        "           *******************************************           ",
-        "            *****************************************            ",
-        "             ***************************************             ",
-        "              *************************************              ",
-        "               ***********************************               ",
-        "                *********************************                ",
-        "                 *******************************                 ",
-        "                  *****************************                  ",
-        "                   ***************************                   ",
-        "                    *************************                    ",
-        "                     ***********************                     ",
-        "                      *********************                      ",
-        "                       *******************                       ",
-        "                        *****************                        ",
-        "                         ***************                         ",
-        "                          *************                          ",
-        "                           ***********                           ",
-        "                            *********                            ",
-        "                             *******                             ",
-        "                              *****                              ",
-        "                               ***                               ",
-        "                                *                                "
+        "      *****     *****      ",
+        "   ********* *********     ",
+        "  *********************    ",
+        " *************************  ",
+        " *************************  ",
+        "  ***********************   ",
+        "   *********************    ",
+        "    *******************     ",
+        "     *****************      ",
+        "      ***************       ",
+        "       *************        ",
+        "        ***********         ",
+        "         *********          ",
+        "          *******           ",
+        "           *****            ",
+        "            ***             ",
+        "             *              "
     ];
 
     let corazonCompleto = "";
     let indexTexto = 0;
+    const palabras = texto.trim().split(" ");
 
     for (let fila of patron) {
+        let filaTexto = "";
         for (let char of fila) {
             if (char === "*") {
-                corazonCompleto += texto[indexTexto % texto.length];
+                const palabra = palabras[indexTexto % palabras.length];
+                filaTexto += palabra + " ";
                 indexTexto++;
             } else {
-                corazonCompleto += " ";
+                filaTexto += "  ";
             }
         }
-        corazonCompleto += "\n";
+        corazonCompleto += filaTexto.trimEnd() + "\n";
     }
 
     let i = 0;
@@ -108,9 +110,9 @@
         document.getElementById("corazon").textContent = corazonCompleto.slice(0, i);
         i++;
         if (i <= corazonCompleto.length) {
-            setTimeout(mostrar, 8); // velocidad de escritura
+            setTimeout(mostrar, 8); // velocidad rápida
         } else {
-            document.getElementById("corazon").classList.add("latido");
+            document.getElementById("corazon").classList.add("parpadeo");
         }
     };
 
@@ -118,4 +120,3 @@
 </script>
 </body>
 </html>
-
